@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./data/mysql/:/var/lib/mysql/
+      # - 
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: "xaA4v8r5LGnbLOXp" # 配置root用户密码
+      MYSQL_DATABASE: "socket" # 业务库名
+      MYSQL_USER: "socket" # 业务库用户名
+      MYSQL_PASSWORD: "wZCKL9TuImXaXqx6" # 业务库密码
+    ports:
+      - 3306:3306 # 对外暴露数据库端口
+
+  redis:
+    image: redis
+    command: --requirepass "vqYu64TVQNo00I86" # 给redis设置密码
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./data/redis/:/data/
+    ports:
+      - 6379:6379 # 暴露redis端口
