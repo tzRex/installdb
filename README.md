@@ -3,3 +3,4 @@
 # 使用方法
 通过 `git` 下载到服务器。
 执行 `docker compose up -d --build` 命令即可，需要 `>20` 版本的 `docker`
+可通过 `docker compose logs` 查看启动情况
